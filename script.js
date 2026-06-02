@@ -293,11 +293,14 @@ function applyImage() {
   const scaledHeight = state.image.naturalHeight * state.image.scale;
   
   // Limitar el desplazamiento para que no se salga demasiado del canvas
-  const maxX = Math.max(0, scaledWidth - w);
-  const maxY = Math.max(0, scaledHeight - h);
+  // Permitir movimiento en ambos ejes
+  const maxX = scaledWidth - w;
+  const minX = -scaledWidth + w;
+  const maxY = scaledHeight - h;
+  const minY = -scaledHeight + h;
   
-  state.image.x = Math.max(-scaledWidth + w, Math.min(state.image.x, maxX));
-  state.image.y = Math.max(-scaledHeight + h, Math.min(state.image.y, maxY));
+  state.image.x = Math.max(minX, Math.min(state.image.x, maxX));
+  state.image.y = Math.max(minY, Math.min(state.image.y, maxY));
   
   bg.style.transform = `translate(${state.image.x}px, ${state.image.y}px) scale(${state.image.scale})`;
   bg.style.transformOrigin = "top left";
@@ -699,7 +702,7 @@ function renderPanel() {
       <input type="file" id="upload" accept="image/*">
 
       <label>Zoom</label>
-      <input type="range" id="zoom" min="1" max="3" step="0.01" value="${state.image.scale}">
+      <input type="range" id="zoom" min="${state.image.minScale}" max="3" step="0.01" value="${state.image.scale}">
       <span style="font-size:12px;opacity:0.7;">Min: ${state.image.minScale.toFixed(2)}</span>
 
       <div class="actions">
@@ -739,7 +742,6 @@ function renderPanel() {
       const newScale = Number(e.target.value);
       state.image.scale = Math.max(state.image.minScale, newScale);
       applyImage();
-      renderPanel();
     };
 
     document.getElementById("back2").onclick = () => goStep(1);
