@@ -702,8 +702,8 @@ function renderPanel() {
       <input type="file" id="upload" accept="image/*">
 
       <label>Zoom</label>
-      <input type="range" id="zoom" min="${state.image.minScale}" max="3" step="0.01" value="${state.image.scale}">
-      <span style="font-size:12px;opacity:0.7;">Min: ${state.image.minScale.toFixed(2)}</span>
+      <input type="range" id="zoom" min="1" max="4" step="0.05" value="${state.image.scale}">
+      <span style="font-size:12px;opacity:0.7;">Scale: ${state.image.scale.toFixed(2)}x | Min: ${state.image.minScale.toFixed(2)}x</span>
 
       <div class="actions">
         <button id="back2">Back</button>
