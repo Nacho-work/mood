@@ -17,15 +17,15 @@ const stepButtons = Array.from(document.querySelectorAll(".step"));
 // =========================
 // CONSTANTES
 // =========================
-const SPEAKER_GAP_TOP_DEFAULT = 30;
-const SPEAKER_GAP_TOP_VERTICAL = 15; // mitad solo para 3:4 y 9:16
+const SPEAKER_GAP_TOP_DEFAULT = 20;
+const SPEAKER_GAP_TOP_VERTICAL = 5;
 const SPEAKER_MUG_GAP = 15;
 const MUGSHOT_BASE_SIZE = 74;
 
 // ✅ 15 px de margen para logo y footer
 const LOGO_PADDING = 15;
 const FOOTER_PADDING_X = 15;
-const FOOTER_PADDING_Y = 15;
+const FOOTER_PADDING_Y = 10;
 
 const LOGO_COLOUR = "https://stillmed.olympics.com/media/Documents/Images/assets/Olympic_rings_Colour.png";
 const LOGO_WHITE  = "https://stillmed.olympics.com/media/Documents/Images/assets/Olympic_rings_White.png";
