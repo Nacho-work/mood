@@ -1,0 +1,260 @@
+@font-face{
+  font-family:'OlympicSerifBold';
+  src:url('https://stillmed.olympics.com/media/Documents/Images/assets/fonts/OlympicSerif-Bold.woff2') format('woff2');
+}
+
+@font-face{
+  font-family:'OlympicHeadline';
+  src:url('https://stillmed.olympics.com/media/Documents/Images/assets/fonts/OlympicHeadline-Regular.woff2') format('woff2');
+}
+
+:root{
+  --bg:#0b0f1f;
+  --panel:#11142a;
+  --btn:#1c2040;
+  --active:#f4c300;
+  --text:#ffffff;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial, sans-serif;
+}
+
+.app{
+  display:flex;
+  height:100vh;
+  overflow:hidden;
+}
+
+/* izquierda */
+.steps{
+  width:20%;
+  min-width:180px;
+  background:var(--panel);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.step{
+  padding:10px 12px;
+  border:none;
+  background:var(--btn);
+  color:#fff;
+  cursor:pointer;
+  text-align:left;
+}
+
+.step.active{
+  background:var(--active);
+  color:#000;
+}
+
+/* centro */
+.center{
+  width:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  overflow:auto;
+}
+
+.canvas{
+  width:480px;
+  height:270px;
+  background:#000;
+  position:relative;
+  overflow:hidden;
+  flex:0 0 auto;
+  box-shadow:0 0 0 1px rgba(255,255,255,.15);
+}
+
+#bg{
+  position:absolute;
+  left:0;
+  top:0;
+  cursor:grab;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+#overlay{
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+}
+
+#textBox{
+  position:absolute;
+  z-index:3;
+  font-family:'OlympicSerifBold', serif;
+  font-size:20px;
+  line-height:1.2;
+  text-align:center;
+  color:#fff;
+  cursor:grab;
+  user-select:none;
+  word-wrap:break-word;
+}
+
+#mugshot{
+  position:absolute;
+  z-index:4;
+  display:none;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+#speaker{
+  position:absolute;
+  z-index:5;
+  text-align:center;
+  font-family:'OlympicHeadline', Arial, sans-serif;
+  color:#fff;
+  user-select:none;
+}
+
+#speaker.with-photo{
+  text-align:left;
+}
+
+#speaker .name{
+  font-family:'OlympicHeadline', Arial, sans-serif;
+  font-size:26px;
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+#speaker .role{
+  font-family:'OlympicHeadline', Arial, sans-serif;
+  font-size:20px;
+  line-height:1.1;
+  margin-top:4px;
+  white-space:pre-line;
+}
+
+#logo{
+  position:absolute;
+  z-index:6;
+  display:none;
+  width:110px;
+  height:auto;
+  object-fit:contain;
+}
+
+#footer{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:7;
+  pointer-events:none;
+  display:none;
+  font-family:'OlympicHeadline', Arial, sans-serif;
+  line-height:1;
+}
+
+#footer *{
+  font-family:'OlympicHeadline', Arial, sans-serif;
+}
+
+/* derecha */
+.panel{
+  width:30%;
+  min-width:280px;
+  background:var(--panel);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  overflow:auto;
+}
+
+.panel h3{
+  margin:0 0 6px;
+  font-size:18px;
+}
+
+.panel label{
+  font-size:13px;
+  opacity:.85;
+}
+
+.panel input[type="text"],
+.panel textarea,
+.panel input[type="file"],
+.panel input[type="range"]{
+  width:100%;
+}
+
+.panel textarea{
+  min-height:72px;
+  resize:vertical;
+}
+
+.toolbar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.toolbar button{
+  padding:8px 10px;
+  border:none;
+  background:var(--btn);
+  color:#fff;
+  cursor:pointer;
+}
+
+.toolbar button.active{
+  outline:2px solid var(--active);
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.actions button{
+  flex:1;
+  padding:10px;
+  border:none;
+  background:var(--btn);
+  color:#fff;
+  cursor:pointer;
+}
+
+.actions button.primary{
+  background:var(--active);
+  color:#000;
+}
+
+.color-grid{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.color-chip{
+  min-width:72px;
+  height:44px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:700;
+}
+
+.color-chip.active{
+  outline:2px solid var(--active);
+}
